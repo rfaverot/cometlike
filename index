@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Computer</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+</head>
+
+<body>
+
+	<div id="app" class="container">
+
+		<navbar mon-titre="MusicoHide"></navbar>
+		<!-- les ":" servent à dire que ce n'est pas une cjaine de caractère qui est attendue -->
+
+		<br>
+
+		<header>
+
+			<div class="hero hero-sm bg-dark">
+				<div class="hero-body">
+					<h1 class="text-center">Bonjour Romain, et bienvenue sur MusicoHide !</h1>
+					<div>
+						<input class="input-group-field" type="text" placeholder="Bonjour ! Que voulez-vous partager aujourd'hui ?" v-model="nouveauPost" style="display: block; margin-left: auto; margin-right: auto; width: 50%;">
+						<br>
+						<button class="btn btn-primary" style="display: block; margin-left: auto; margin-right: auto;" @click="adPost">Partager !</button>
+					</div>
+				</div>
+			</div>
+
+		</header>
+
+		<br>
+
+		<ul style="list-style: none;">
+			<li v-for="post in posts">
+				<postfeed :toto="post"></postfeed>
+				<!-- la props toto est égal maintenant à un post du tableau des posts (ou un seul élément quand on l'appelle ex: l'auteur...) -->
+			</li>
+		</ul>
+
+
+	</div>
+
+	<script src="./app/store/postes.store.js"></script>
+	<script src="./app/ajoutcommentaires.js"></script>
+	<script src="./app/postfeed.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="./app/navbarleft.js"></script>
+	<script src="./app/navbarcenter.js"></script>
+	<script src="./app/navbarright.js"></script>
+	<script src="./app/navbar.js"></script>
+
+	<script src="./app/app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+ var postfeed = {
+ 	template: `
+ 	
+    <section>
+	     <div class="card" style="width: 75%; display: block; margin-left: auto; margin-right: auto;">
+	      <div class="card-header">
+	    	<figure class="avatar avatar-lg">
+			  <img src="https://picturepan2.github.io/spectre/img/avatar-1.png" alt="...">
+			</figure>
+	        <div class="card-title h5">{{toto.auteur}}</div>
+	        <div class="card-subtitle text-gray">{{toto.date}}</div>
+	      </div>
+	      <div class="card-body">{{toto.contenu}}
+	      
+	      <br>
+	      <hr>
+	      <br>
+		  <a @click.prevent="ajoutLike(toto.id)" class="icon icon-check" style="color: white; background: #5755d9; padding: 15px; border-radius: 2px"></a> {{toto.like}} likes
+		  <br>
+	      <br>
+	      <h5> Commentaires : </h5>	
+	      
+	      <br>
+	      
+	    
+	      <ajoutcommentaires :commentdata="commentaire" v-for="commentaire in toto.commentaires"></ajoutcommentaires>
+	    	
+	      <br>
+	      <br>
+	      
+	      <div class="form-group">
+			  <label class="form-label" for="input-example-3">Commenter : </label>
+			  <textarea class="form-input" id="input-example-3" placeholder="Commentaire..." rows="3" v-model="newcom"></textarea>
+			  <button class="btn btn-primary" style="display: block; margin-left: auto; margin-right: auto;" @click="ajouterCom(toto.id)">Partager !</button>
+	      </div>
+	      
+		  </div>
+		  
+	    </div>
+	 </section>
+
+	`,
+
+ 	data() {
+ 		return {
+ 			nouveauCommentaire: postsStore,
+ 			newcom: "",
+ 			nouveauLike: postsStore,
+ 		}
+
+ 	},
+
+ 	components: {
+ 		'ajoutcommentaires': ajoutcommentaires
+ 	},
+
+ 	props: {
+ 		toto: {
+ 			type: Object,
+ 			default: null
+ 		},
+
+ 	},
+
+ 	methods: {
+ 		ajouterCom(id) {
+ 				this.nouveauCommentaire.addComment(id, {
+ 					user: "New user",
+ 					date: "00/00/0000",
+ 					like: 0,
+ 					commentaire: this.newcom
+ 				})
+
+ 				this.newcom = ""
+ 			},
+
+ 			ajoutLike(id) {
+ 				this.nouveauLike.addLike(id, {
+ 					like: this.like++
+ 				})
+ 			},
+
+ 	}
+
+
+ }

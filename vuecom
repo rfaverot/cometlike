@@ -1,0 +1,33 @@
+ var ajoutcommentaires = {
+ 	template: `
+ 	
+    <section v-if="commentdata" style=" width: 50%; display: block; margin-left: auto; margin-right: auto;">
+		
+		<br>
+		
+		<div class="card">
+	      <div class="card-header">
+	      <figure class="avatar avatar-lg">
+			  <img src="https://picturepan2.github.io/spectre/img/avatar-1.png" alt="...">
+			</figure>
+	      <div class="card-title h5">{{commentdata.user}}</div>
+	        <div class="card-subtitle text-gray">{{commentdata.date}}</div>
+	      </div>
+	      <div class="card-body">{{commentdata.commentaire}}</div>
+	    
+	    <br>
+	   
+		
+	 </section>
+
+	`,
+
+ 	props: {
+
+ 		commentdata: {
+ 			type: Object,
+ 			default: null
+ 		}
+ 	}
+
+ }

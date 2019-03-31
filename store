@@ -1,0 +1,79 @@
+class posts {
+	constructor() {
+		this.posts = [{
+				id: 1,
+				auteur: 'Romain',
+				contenu: 'Lorem Ipsum 1',
+				date: '00/00/0000',
+				like: 5,
+				commentaires: [{
+					user: 'Luis',
+					commentaire: 'Génial !',
+					date: '00/00/0000',
+				}]
+			}, {
+				id: 2,
+				auteur: 'Luis',
+				contenu: 'Lorem Ipsum 2',
+				date: '00/00/0000',
+				like: 1,
+				commentaires: [{
+					user: 'jb',
+					commentaire: 'Cool !',
+					date: '00/00/0000',
+				}]
+			}, {
+				id: 3,
+				auteur: 'JB',
+				contenu: 'Lorem Ipsum 3',
+				date: '00/00/0000',
+				like: 55,
+				commentaires: [{
+					user: 'Romain',
+					commentaire: 'Parfait !',
+					date: '00/00/0000',
+				}]
+			}
+
+		]
+	}
+
+
+	addPost(NewPost) {
+		this.posts.push(NewPost)
+	}
+
+	addComment(idPost, comment) {
+		//pour chaque postes, si l'id de celui est égal au paramètre idPost, alors j'ajoute le commentaire
+		this.posts.forEach(e => {
+			// si e.id == idPost
+			// ajouter le com a e.comments
+			if (e.id == idPost) {
+				e.commentaires.push(comment)
+			}
+		})
+	}
+
+
+	//addLike(idPosts) { //exemple foreach
+	//	this.posts.like++
+	//}
+
+	addLike(idPosts) {
+		this.posts.forEach(e => {
+			// si e.id == idPost
+			// ajouter le com a e.comments
+			if (e.id == idPosts) {
+				e.like++
+			}
+		})
+	}
+}
+
+var postsStore = new posts();
+
+postsStore.addComment(1, {
+	user: 'Luis',
+	commentaire: 'Génial !',
+	date: '00/00/0000'
+})
